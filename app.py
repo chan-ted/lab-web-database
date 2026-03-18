@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
+# Configure the SQLite database URI
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////workspace/database.db'
 db = SQLAlchemy(app)
 
@@ -10,7 +11,7 @@ db = SQLAlchemy(app)
 def home():
     return "Welcome to the F1 Team Management System!"
 
-
+# Ensure database tables are created
 def create_tables():
     with app.app_context():
         db.create_all()
@@ -18,4 +19,3 @@ def create_tables():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8000)
-
